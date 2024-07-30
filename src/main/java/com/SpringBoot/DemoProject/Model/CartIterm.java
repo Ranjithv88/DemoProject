@@ -2,10 +2,19 @@ package com.SpringBoot.DemoProject.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class CartIterm {
 
     @Id
@@ -25,38 +34,6 @@ public class CartIterm {
     @JoinColumn(name = "cartId")
     private Cart cart;
     private LocalDate CreatedOn;
-
-    public Long getCartItermId() {
-        return cartItermId;
-    }
-
-    public void setCartItermId(Long cartItermId) {
-        this.cartItermId = cartItermId;
-    }
-
-    public Set<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(Set<Product> products) {
-        this.products = products;
-    }
-
-    public Cart getCart() {
-        return cart;
-    }
-
-    public void setCart(Cart cart) {
-        this.cart = cart;
-    }
-
-    public LocalDate getCreatedOn() {
-        return CreatedOn;
-    }
-
-    public void setCreatedOn(LocalDate createdOn) {
-        CreatedOn = createdOn;
-    }
 
 }
 

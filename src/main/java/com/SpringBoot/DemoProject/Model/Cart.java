@@ -1,11 +1,19 @@
 package com.SpringBoot.DemoProject.Model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Cart {
 
     @Id
@@ -19,38 +27,6 @@ public class Cart {
     @OneToMany(mappedBy = "cartItermId",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<CartIterm> cartIterm;
     private LocalDate createdOn;
-
-    public long getCartId() {
-        return cartId;
-    }
-
-    public void setCartId(long cartId) {
-        this.cartId = cartId;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<CartIterm> getCartIterm() {
-        return cartIterm;
-    }
-
-    public void setCartIterm(List<CartIterm> cartIterm) {
-        this.cartIterm = cartIterm;
-    }
-
-    public LocalDate getCreatedOn() {
-        return createdOn;
-    }
-
-    public void setCreatedOn(LocalDate createdOn) {
-        this.createdOn = createdOn;
-    }
 
 }
 
