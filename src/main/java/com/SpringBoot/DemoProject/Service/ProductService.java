@@ -1,12 +1,14 @@
 package com.SpringBoot.DemoProject.Service;
 
 import com.SpringBoot.DemoProject.Model.Product;
+import com.SpringBoot.DemoProject.Model.User;
 import com.SpringBoot.DemoProject.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ProductService {
@@ -39,6 +41,11 @@ public class ProductService {
             productRepository.deleteById(product);
         }
         return " List of ID Deleted Successfully !";
+    }
+
+    public List<Product> ProductRawGetApi(Set<Long> productId) {
+        List<Product> rawProduct = productRepository.GetProductId(productId);
+        return rawProduct;
     }
 
 }

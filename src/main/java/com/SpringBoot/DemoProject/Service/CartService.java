@@ -1,11 +1,12 @@
 package com.SpringBoot.DemoProject.Service;
 
 import com.SpringBoot.DemoProject.Model.Cart;
+import com.SpringBoot.DemoProject.Model.User;
 import com.SpringBoot.DemoProject.Repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class CartService {
@@ -37,6 +38,11 @@ public class CartService {
             cartRepository.deleteById(cart);
         }
         return " List of ID Deleted Successfully !";
+    }
+
+    public List<Cart> CartRawGetApi(Set<Long> cartId) {
+        List<Cart> rawCart = cartRepository.GetCartId(cartId);
+        return rawCart;
     }
 
 }

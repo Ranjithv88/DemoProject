@@ -1,6 +1,7 @@
 package com.SpringBoot.DemoProject.Controller;
 
 import com.SpringBoot.DemoProject.Service.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,59 +12,54 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/delete/list")
+@RequiredArgsConstructor
 public class DeleteListController {
 
-//Delete List of id method in User class
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+    private final AddressService addressService;
+    private final CartService cartService;
+    private final CartItermService cartItermService;
+    private final CategoryService categoryService;
+    private final OrdersService ordersService;
+    private final ProductService productService;
+
+    //Delete List of id method in User class
     @DeleteMapping("/users")
     public String Users(@RequestBody List<Long> user){
         return userService.UserDeleteListApi(user);
     }
 
-//Delete List of id method in Address class
-    @Autowired
-    private AddressService addressService;
+    //Delete List of id method in Address class
     @DeleteMapping("/address")
     public String Address(@RequestBody List<Long> Address){
         return addressService.AddressDeleteListApi(Address);
     }
 
-//Delete List of id method in CartIterm class
-    @Autowired
-    private CartItermService cartItermService;
+    //Delete List of id method in CartIterm class
     @DeleteMapping("/cartiterm")
     public String CartIterm(@RequestBody List<Long> CartIterm){
         return cartItermService.CartItermDeleteListApi(CartIterm);
     }
 
-//Delete List of id method in Cart class
-    @Autowired
-    private CartService cartService;
+    //Delete List of id method in Cart class
     @DeleteMapping("/cart")
     public String Cart(@RequestBody List<Long> Cart){
         return cartService.CartDeleteListApi(Cart);
     }
 
-//Delete List of id method in Category class
-    @Autowired
-    private CategoryService categoryService;
+    //Delete List of id method in Category class
     @DeleteMapping("/category")
     public String Category(@RequestBody List<Long> Category){
         return categoryService.CategoryDeleteListApi(Category);
     }
 
-//Delete List of id method in Orders class
-    @Autowired
-    private OrdersService ordersService;
+    //Delete List of id method in Orders class
     @DeleteMapping("/orders")
     public String Orders(@RequestBody List<Long> Orders){
         return ordersService.OrdersDeleteListApi(Orders);
     }
 
-//Delete List of id method in Product class
-    @Autowired
-    private ProductService productService;
+    //Delete List of id method in Product class
     @DeleteMapping("/product")
     public String Product(@RequestBody List<Long> product){
         return productService.ProductDeleteListApi(product);

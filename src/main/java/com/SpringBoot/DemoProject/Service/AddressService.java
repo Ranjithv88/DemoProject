@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class AddressService {
@@ -42,7 +43,10 @@ public class AddressService {
         return " List of ID Deleted Successfully !";
     }
 
-
+    public List<Address> AddressRawGetApi(Set<Long> addressId) {
+        List<Address> rawAddress = addressRepository.getAddressId(addressId);
+        return rawAddress;
+    }
 
 }
 

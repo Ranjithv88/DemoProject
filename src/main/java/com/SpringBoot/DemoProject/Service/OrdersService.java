@@ -1,11 +1,12 @@
 package com.SpringBoot.DemoProject.Service;
 
 import com.SpringBoot.DemoProject.Model.Orders;
+import com.SpringBoot.DemoProject.Model.User;
 import com.SpringBoot.DemoProject.Repository.OrdersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class OrdersService {
@@ -37,6 +38,11 @@ public class OrdersService {
             ordersRepository.deleteById(orders);
         }
         return " List of ID Deleted Successfully !";
+    }
+
+    public List<Orders> OrderRawGetApi(Set<Long> orderId) {
+        List<Orders> rawOrder = ordersRepository.GetOrderId(orderId);
+        return rawOrder;
     }
 
 }

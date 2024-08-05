@@ -1,12 +1,14 @@
 package com.SpringBoot.DemoProject.Service;
 
 import com.SpringBoot.DemoProject.Model.Category;
+import com.SpringBoot.DemoProject.Model.User;
 import com.SpringBoot.DemoProject.Repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class CategoryService {
@@ -42,4 +44,10 @@ public class CategoryService {
         return " List of ID Deleted Successfully !";
     }
 
+    public List<Category> CategoryRawGetApi(Set<Long> categoryId) {
+        List<Category> rawCategory = categoryRepository.GetCategoryId(categoryId);
+        return rawCategory;
+    }
+
 }
+

@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/get")
 public class GetController {
 
-//get method in User class
+    //get method in User class
     @Autowired
     private UserService userService;
     @GetMapping("/users")
@@ -21,7 +21,7 @@ public class GetController {
         return userService.UserGetApi();
     }
 
-//get method in Address class
+    //get method in Address class
     @Autowired
     private AddressService addressService;
     @GetMapping("/address")
@@ -29,7 +29,7 @@ public class GetController {
         return addressService.AddressGetApi();
     }
 
-//get method in Cart class
+    //get method in Cart class
     @Autowired
     private CartService cartService;
     @GetMapping("/cart")
@@ -37,7 +37,7 @@ public class GetController {
         return cartService.CartGetApi();
     }
 
-//get method in CartIterm class
+    //get method in CartIterm class
     @Autowired
     private CartItermService cartItermService;
     @GetMapping("/cartiterm")
@@ -45,7 +45,7 @@ public class GetController {
         return cartItermService.CartItermGetApi();
     }
 
-//get method in Category class
+    //get method in Category class
     @Autowired
     private CategoryService categoryService;
     @GetMapping("/category")
@@ -53,7 +53,7 @@ public class GetController {
         return categoryService.CategoryGetApi();
     }
 
-//get method in Order class
+    //get method in Order class
     @Autowired
     private OrdersService ordersService;
     @GetMapping("/orders")
@@ -61,7 +61,7 @@ public class GetController {
         return ordersService.OrdersGetApi();
     }
 
-//get method in Product class
+    //get method in Product class
     @Autowired
     private ProductService productService;
     @GetMapping("/Product")
