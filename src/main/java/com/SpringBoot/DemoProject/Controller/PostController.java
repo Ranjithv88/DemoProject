@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/post")
+@RequestMapping("/seller/post")
 @RequiredArgsConstructor
 public class PostController {
 
-    private final UserService userService;
     private final AddressService addressService;
     private final CartService cartService;
     private final CartItermService cartItermService;
@@ -22,11 +21,6 @@ public class PostController {
     private final OrdersService ordersService;
     private final ProductService productService;
 
-    //Post method in User class
-    @PostMapping("/users")
-    public String user(@RequestBody User user){
-        return userService.UserPostApi(user);
-    }
 
     //Post method in Address class
     @PostMapping("/address")

@@ -11,11 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/delete/list")
+@RequestMapping("/seller/delete/list")
 @RequiredArgsConstructor
 public class DeleteListController {
 
-    private final UserService userService;
     private final AddressService addressService;
     private final CartService cartService;
     private final CartItermService cartItermService;
@@ -23,11 +22,6 @@ public class DeleteListController {
     private final OrdersService ordersService;
     private final ProductService productService;
 
-    //Delete List of id method in User class
-    @DeleteMapping("/users")
-    public String Users(@RequestBody List<Long> user){
-        return userService.UserDeleteListApi(user);
-    }
 
     //Delete List of id method in Address class
     @DeleteMapping("/address")

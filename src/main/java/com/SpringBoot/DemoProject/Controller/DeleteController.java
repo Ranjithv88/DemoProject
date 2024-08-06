@@ -6,11 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/delete")
+@RequestMapping("/seller/delete")
 @RequiredArgsConstructor
 public class DeleteController {
 
-    private final UserService userService;
     private final AddressService addressService;
     private final CartService cartService;
     private final CartItermService cartItermService;
@@ -18,11 +17,6 @@ public class DeleteController {
     private final OrdersService ordersService;
     private final ProductService productService;
 
-    //Delete method in User class
-    @DeleteMapping("/users/{id}")
-    public String user(@PathVariable long userId){
-        return userService.UserDeleteApi(userId);
-    }
 
     //Delete method in Address class
     @DeleteMapping("/address/{id}")

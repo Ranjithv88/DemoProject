@@ -7,11 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/put")
+@RequestMapping("/seller/put")
 @RequiredArgsConstructor
 public class PutController {
 
-    private final UserService userService;
     private final AddressService addressService;
     private final CartService cartService;
     private final CartItermService cartItermService;
@@ -19,12 +18,6 @@ public class PutController {
     private final OrdersService ordersService;
     private final ProductService productService;
 
-    //Put method in User class
-    @PutMapping("/users/{id}")
-    public String users(@RequestBody User user, @PathVariable long id){
-        user.setId(id);
-        return userService.UserPutApi(user);
-    }
 
     //Put method in Address class
     @PutMapping("/address/{id}")

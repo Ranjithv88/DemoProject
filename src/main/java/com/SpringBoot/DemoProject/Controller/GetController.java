@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/get")
+@RequestMapping("/user/get")
 public class GetController {
 
     //get method in User class
