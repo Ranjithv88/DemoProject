@@ -27,7 +27,7 @@ public class User {
     private String name;
 
     @NotBlank(message = " Email is Mandatory ! ")
-    @Email(message = " Not Valid ! ")
+    @Email(message = " Not Valid Email ! ")
     private String email;
 
     @NotNull(message = " password is Mandatory ! ")
