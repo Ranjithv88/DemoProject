@@ -20,8 +20,8 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class AuthenticationSecurityFilter extends OncePerRequestFilter {
 
-    private UserDetailsService userDetailsService;
-    private JwtUtils jwtUtils;
+    private final UserDetailsService userDetailsService;
+    private final JwtUtils jwtUtils;
 
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request,@NonNull HttpServletResponse response,@NonNull FilterChain filterChain) throws ServletException, IOException {
@@ -30,13 +30,13 @@ public class AuthenticationSecurityFilter extends OncePerRequestFilter {
         final String jwt;
         final String email;
 
-        if(authentication==null||authentication.startsWith("Bearer ")){
+        if(authentication==null|| !authentication.startsWith("Bearer ")){
             filterChain.doFilter(request,response);
             return;
         }
 
         jwt = authentication.substring(7);
-        email = jwtUtils.ExtractEmail(jwt);
+        email = jwtUtils.extractEmail(jwt);
 
         if(email!=null&& SecurityContextHolder.getContext().getAuthentication()==null){
 

@@ -25,6 +25,7 @@ public class JwtUtils {
     private String SECRET_KEY;
 
     public String CreateToken (Map<String,Object> ExtractClaims , User LoginDetails ){
+        logger.info(" Generate Token  .......! ");
         ExtractClaims.put("email",LoginDetails.getEmail());
         ExtractClaims.put("role",LoginDetails.getAuthorities());
         return Jwts.builder().setClaims(ExtractClaims).setIssuedAt(new Date(System.currentTimeMillis()))
@@ -41,7 +42,7 @@ public class JwtUtils {
         return Jwts.parser().setSigningKey(SignInKey()).build().parseClaimsJws(Token).getBody();
     }
 
-    public String ExtractEmail (String Token) {
+    public String extractEmail (String Token) {
         logger.info(" Extract Email ....... ! ");
         return ExtraClaims(Token).get("email").toString();
     }
@@ -51,6 +52,7 @@ public class JwtUtils {
         logger.info(" Extract Role ......! ");
         if(RoleClaims instanceof List<?>){
             List<HashMap<String,String>> Roles = (List<HashMap<String,String>>) RoleClaims;
+            System.out.println(Roles);
             return Roles.stream().map(x-> new SimpleGrantedAuthority(x.get("authority"))).collect(Collectors.toSet());
         }else {
             return List.of( new SimpleGrantedAuthority(null));
@@ -67,7 +69,7 @@ public class JwtUtils {
     }
 
     public Boolean TokenValidation (String Token, UserDetails userDetails) {
-        final String username = ExtractEmail(Token);
+        final String username = extractEmail(Token);
         return (username.equals(userDetails.getUsername())) && validateExpiration(Token);
     }
 

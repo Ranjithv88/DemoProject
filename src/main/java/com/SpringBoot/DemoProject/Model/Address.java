@@ -1,5 +1,6 @@
 package com.SpringBoot.DemoProject.Model;
 
+import com.SpringBoot.DemoProject.Model.Enum.AddressType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

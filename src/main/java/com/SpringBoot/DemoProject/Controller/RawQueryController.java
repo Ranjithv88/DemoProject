@@ -2,6 +2,7 @@ package com.SpringBoot.DemoProject.Controller;
 
 import com.SpringBoot.DemoProject.Model.*;
 import com.SpringBoot.DemoProject.Service.*;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/get/raw")
+@RequestMapping("user/get/raw")
 @RequiredArgsConstructor
 public class RawQueryController {
 
@@ -26,43 +27,43 @@ public class RawQueryController {
 
     // get Condition method in User class
     @GetMapping("/users/{id}")
-    public List<User> user(@PathVariable Set<Long> id){
+    public List<User> user(@Valid @PathVariable Set<Long> id){
         return userService.UserRawGetApi(id);
     }
 
     // get Condition method in User class
     @GetMapping("/users/{addressId}")
-    public List<Address> address(@PathVariable Set<Long> addressId){
+    public List<Address> address(@Valid @PathVariable Set<Long> addressId){
         return addressService.AddressRawGetApi(addressId);
     }
 
     // get Condition method in CartIterm class
     @GetMapping("/users/{cartItermId}")
-    public List<CartIterm> cartIterm(@PathVariable Set<Long> cartItermId){
+    public List<CartIterm> cartIterm(@Valid @PathVariable Set<Long> cartItermId){
         return cartItermService.CartItermRawGetApi(cartItermId);
     }
 
     // get Condition method in Cart class
     @GetMapping("/users/{cartId}")
-    public List<Cart> cart(@PathVariable Set<Long> cartId){
+    public List<Cart> cart(@Valid @PathVariable Set<Long> cartId){
         return cartService.CartRawGetApi(cartId);
     }
 
     // get Condition method in Category class
     @GetMapping("/users/{categoryId}")
-    public List<Category> Category(@PathVariable Set<Long> categoryId){
+    public List<Category> category(@Valid @PathVariable Set<Long> categoryId){
         return categoryService.CategoryRawGetApi(categoryId);
     }
 
     // get Condition method in Order class
     @GetMapping("/users/{orderId}")
-    public List<Orders> Order(@PathVariable Set<Long> orderId){
+    public List<Orders> order(@Valid @PathVariable Set<Long> orderId){
         return ordersService.OrderRawGetApi(orderId);
     }
 
     // get Condition method in User class
     @GetMapping("/users/{productId}")
-    public List<Product> product(@PathVariable Set<Long> productId){
+    public List<Product> product(@Valid @PathVariable Set<Long> productId){
         return productService.ProductRawGetApi(productId);
     }
 

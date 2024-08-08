@@ -17,7 +17,7 @@ public class GetController {
     @Autowired
     private UserService userService;
     @GetMapping("/users")
-    public List<User> User(){
+    public List<User> user(){
         return userService.UserGetApi();
     }
 
@@ -25,7 +25,7 @@ public class GetController {
     @Autowired
     private AddressService addressService;
     @GetMapping("/address")
-    public List<Address> Address(){
+    public List<Address> address(){
         return addressService.AddressGetApi();
     }
 
@@ -33,7 +33,7 @@ public class GetController {
     @Autowired
     private CartService cartService;
     @GetMapping("/cart")
-    public List<Cart> Cart(){
+    public List<Cart> cart(){
         return cartService.CartGetApi();
     }
 
@@ -41,7 +41,7 @@ public class GetController {
     @Autowired
     private CartItermService cartItermService;
     @GetMapping("/cartiterm")
-    public List<CartIterm> CartIterm(){
+    public List<CartIterm> cartIterm(){
         return cartItermService.CartItermGetApi();
     }
 
@@ -49,7 +49,7 @@ public class GetController {
     @Autowired
     private CategoryService categoryService;
     @GetMapping("/category")
-    public List<Category> Category(){
+    public List<Category> category(){
         return categoryService.CategoryGetApi();
     }
 
@@ -57,7 +57,7 @@ public class GetController {
     @Autowired
     private OrdersService ordersService;
     @GetMapping("/orders")
-    public List<Orders> Order(){
+    public List<Orders> order(){
         return ordersService.OrdersGetApi();
     }
 
@@ -65,7 +65,7 @@ public class GetController {
     @Autowired
     private ProductService productService;
     @GetMapping("/Product")
-    public List<Product> Product(){
+    public List<Product> product(){
         return productService.ProductGetApi();
     }
 

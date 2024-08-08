@@ -1,7 +1,7 @@
 package com.SpringBoot.DemoProject.Service;
 
 import com.SpringBoot.DemoProject.Model.Address;
-import com.SpringBoot.DemoProject.Model.AddressType;
+import com.SpringBoot.DemoProject.Model.Enum.AddressType;
 import com.SpringBoot.DemoProject.Repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

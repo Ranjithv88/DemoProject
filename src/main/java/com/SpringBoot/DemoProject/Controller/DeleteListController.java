@@ -1,6 +1,7 @@
 package com.SpringBoot.DemoProject.Controller;
 
 import com.SpringBoot.DemoProject.Service.*;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,37 +26,37 @@ public class DeleteListController {
 
     //Delete List of id method in Address class
     @DeleteMapping("/address")
-    public String Address(@RequestBody List<Long> Address){
+    public String address(@Valid @RequestBody List<Long> Address){
         return addressService.AddressDeleteListApi(Address);
     }
 
     //Delete List of id method in CartIterm class
     @DeleteMapping("/cartiterm")
-    public String CartIterm(@RequestBody List<Long> CartIterm){
+    public String cartIterm(@Valid @RequestBody List<Long> CartIterm){
         return cartItermService.CartItermDeleteListApi(CartIterm);
     }
 
     //Delete List of id method in Cart class
     @DeleteMapping("/cart")
-    public String Cart(@RequestBody List<Long> Cart){
+    public String cart(@Valid @RequestBody List<Long> Cart){
         return cartService.CartDeleteListApi(Cart);
     }
 
     //Delete List of id method in Category class
     @DeleteMapping("/category")
-    public String Category(@RequestBody List<Long> Category){
+    public String Category(@Valid @RequestBody List<Long> Category){
         return categoryService.CategoryDeleteListApi(Category);
     }
 
     //Delete List of id method in Orders class
     @DeleteMapping("/orders")
-    public String Orders(@RequestBody List<Long> Orders){
+    public String orders(@Valid @RequestBody List<Long> Orders){
         return ordersService.OrdersDeleteListApi(Orders);
     }
 
     //Delete List of id method in Product class
     @DeleteMapping("/product")
-    public String Product(@RequestBody List<Long> product){
+    public String product(@Valid @RequestBody List<Long> product){
         return productService.ProductDeleteListApi(product);
     }
 

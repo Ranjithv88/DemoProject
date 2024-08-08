@@ -1,6 +1,6 @@
 package com.SpringBoot.DemoProject.Service;
 
-import com.SpringBoot.DemoProject.Model.Role;
+import com.SpringBoot.DemoProject.Model.Enum.Role;
 import com.SpringBoot.DemoProject.Model.User;
 import com.SpringBoot.DemoProject.Repository.*;
 import lombok.AllArgsConstructor;

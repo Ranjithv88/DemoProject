@@ -1,5 +1,6 @@
 package com.SpringBoot.DemoProject.Model;
 
+import com.SpringBoot.DemoProject.Model.Enum.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -9,7 +10,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.time.LocalDate;
 import java.util.Collection;
@@ -50,6 +50,7 @@ public class User implements UserDetails {
 
     private LocalDate CreatedOn;
     private Boolean Status;
+    @Enumerated(EnumType.STRING)
     private Role role;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
