@@ -24,11 +24,11 @@ public class JwtUtils {
     @Value("${spring.jwtToken.secretKey}")
     private String SECRET_KEY;
 
-    public String CreateToken (Map<String,Object> ExtractClaims , User LoginDetails ){
+    public String CreateToken (Map<String,Object> extractClaims , User LoginDetails ){
         logger.info(" Generate Token  .......! ");
-        ExtractClaims.put("email",LoginDetails.getEmail());
-        ExtractClaims.put("role",LoginDetails.getAuthorities());
-        return Jwts.builder().setClaims(ExtractClaims).setIssuedAt(new Date(System.currentTimeMillis()))
+        extractClaims.put("email",LoginDetails.getEmail());
+        extractClaims.put("role",LoginDetails.getAuthorities());
+        return Jwts.builder().setClaims(extractClaims).setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() +1000*60*60*10))
                 .signWith(SignInKey(), SignatureAlgorithm.HS384).compact();
     }
@@ -47,7 +47,7 @@ public class JwtUtils {
         return ExtraClaims(Token).get("email").toString();
     }
 
-    public Collection<? extends GrantedAuthority> ExtractRole (String Token){
+    public Collection<? extends GrantedAuthority> extractRole (String Token){
         Object RoleClaims = ExtraClaims(Token).get("role");
         logger.info(" Extract Role ......! ");
         if(RoleClaims instanceof List<?>){
@@ -65,12 +65,14 @@ public class JwtUtils {
     }
 
     public Boolean validateExpiration (String Token) {
+        logger.info(" Extract Token validate ...... ! ");
+        System.out.println(ExtractExpiration(Token).before(new Date()));
         return ExtractExpiration(Token).before(new Date());
     }
 
     public Boolean TokenValidation (String Token, UserDetails userDetails) {
         final String username = extractEmail(Token);
-        return (username.equals(userDetails.getUsername())) && validateExpiration(Token);
+        return (username.equals(userDetails.getUsername())) && !validateExpiration(Token);
     }
 
 }

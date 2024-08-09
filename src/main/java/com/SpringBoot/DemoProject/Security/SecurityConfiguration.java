@@ -23,7 +23,7 @@ public class SecurityConfiguration {
     private authenticationEntryPoint entryPoint;
     private AuthenticationProvider authenticationProvider;
 
-    private final String[] paths = {"/register","/login","/user/**","/seller/**","/admin/**","/test"};
+    private final String[] paths = {"/register","/login","/user/get/**","/seller/**","/admin/**","/test"};
 
 
     @Bean
@@ -34,10 +34,10 @@ public class SecurityConfiguration {
                 .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authentication->
                         authentication.requestMatchers(paths[0],paths[1],paths[5]).permitAll()
-                                .requestMatchers(paths[2]).hasAuthority("USER")
-                                .requestMatchers(paths[2],paths[3]).hasAnyAuthority("SELLER")
-                                .requestMatchers(paths[4]).hasAnyAuthority("ADMIN")
-                                .requestMatchers(paths).hasAnyAuthority("DEVELOPER")
+                                .requestMatchers("/user/get/**").hasAuthority("USER")
+                                .requestMatchers(paths[2],paths[3]).hasAuthority("SELLER")
+                                .requestMatchers(paths[4]).hasAuthority("ADMIN")
+                                .requestMatchers(paths).hasAuthority("DEVELOPER")
                         );
         httpSecurity.authenticationProvider(authenticationProvider);
         httpSecurity.addFilterBefore(securityFilterChain,UsernamePasswordAuthenticationFilter.class);

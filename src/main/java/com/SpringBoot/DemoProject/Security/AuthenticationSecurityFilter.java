@@ -41,9 +41,10 @@ public class AuthenticationSecurityFilter extends OncePerRequestFilter {
         if(email!=null&& SecurityContextHolder.getContext().getAuthentication()==null){
 
             UserDetails userDetails = userDetailsService.loadUserByUsername(email);
-
+            logger.info(jwtUtils.TokenValidation(jwt,userDetails));
             if(jwtUtils.TokenValidation(jwt,userDetails)){
-                UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userDetails,null,jwtUtils.ExtractRole(jwt));
+                logger.info("Set userDetails.");
+                    UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userDetails,null,jwtUtils.extractRole(jwt));
                 token.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(token);
             }
